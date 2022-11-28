@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Gym {
+	id			Int @default(autoincrement()) @id
+	name		String @unique
+	address 	String
+	yogaClasses Boolean
+	owner 		String
+}
+
+model User {
+	id                String   	@id @default(cuid())
+  	email             String   	@unique
+}

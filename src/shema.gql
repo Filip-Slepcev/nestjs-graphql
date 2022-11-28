@@ -1,0 +1,42 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type GymEntity {
+  id: Int!
+  name: String!
+  address: String!
+  yogaClasses: Boolean!
+  owner: String!
+}
+
+type UserEntity {
+  id: String!
+  email: String!
+}
+
+type Query {
+  getAllGyms: [GymEntity!]!
+  me: UserEntity!
+}
+
+type Mutation {
+  createGym(gym: CreateGymDto!): GymEntity!
+  updateGym(id: Float!, gym: UpdateGymDto!): GymEntity!
+  deleteGym(id: Float!): GymEntity!
+  login(email: String!): String!
+}
+
+input CreateGymDto {
+  name: String!
+  address: String!
+  yogaClasses: Boolean!
+  owner: String!
+}
+
+input UpdateGymDto {
+  name: String
+  address: String
+  yogaClasses: Boolean
+  owner: String
+}
