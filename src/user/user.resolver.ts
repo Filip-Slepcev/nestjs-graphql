@@ -1,7 +1,7 @@
-import { User } from '.prisma/client';
 import { UseGuards } from '@nestjs/common';
-import { Args, Mutation, Resolver, Query, Context } from '@nestjs/graphql';
+import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { AuthGuard } from './auth.gaurd';
+import { User, UserInfo } from './user.decorator';
 import { UserEntity } from './user.entity';
 import { UserService } from './user.service';
 
@@ -11,7 +11,7 @@ export class UserResolver {
 
   @Query(() => UserEntity)
   @UseGuards(new AuthGuard())
-  me(@Context('user') user: User) {
+  me(@User() user: UserInfo) {
     return user;
   }
   @Mutation(() => String)
